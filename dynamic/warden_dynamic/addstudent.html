@@ -1,0 +1,27 @@
+{% extends 'base_homepagewarden.html' %}
+
+
+{% block title %}
+home
+{% endblock %}
+
+{% block home_content %}
+
+<h1>Allocate Rooms to Students</h1>
+
+{% if studentobjs %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <div style="display: flex; gap: 2.5%; flex-direction: row; flex-wrap: wrap;">
+        {% for studentobj in studentobjs %}
+            {% include 'studentcard.html' %}
+        {% endfor %}
+        </div><br>
+        <input type="submit" value="Add Student">
+    </form>
+
+
+{% else %}
+<p>No Students registered yet...</p>
+{% endif %}
+{% endblock %}

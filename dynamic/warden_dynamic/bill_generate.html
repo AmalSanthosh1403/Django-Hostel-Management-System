@@ -1,0 +1,46 @@
+{% extends 'base_homepagewarden.html' %}
+{% load static %}
+
+{% block title %}
+viewrooms
+{% endblock %}
+
+{% block csslink %}
+<link rel="stylesheet" href="{% static 'css/details.css' %}">
+
+{% endblock %}
+
+{% block home_content %}
+
+<h3>Add a new plan</h3>
+
+<form action="" method="post">
+    {% csrf_token %}
+
+    <!-- Date Input -->
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Starting Date</span>
+        <input type="date" id="datewidth" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm" name="newdate" required>
+    </div>
+
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Ending Date</span>
+        <input type="date" id="datewidth" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm" name="newdate" required>
+    </div>
+
+
+
+    <div class="form-button-set">
+        <button type="submit" class="c-button c-button--navy">SUBMIT</button>
+        <button type="reset" class="c-button c-button--navy">CLEAR</button>
+    </div><br>
+</form>
+
+
+
+
+
+
+{% endblock %}

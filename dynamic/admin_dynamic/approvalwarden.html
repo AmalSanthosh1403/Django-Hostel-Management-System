@@ -1,0 +1,43 @@
+{% extends 'base_homepageadmin.html' %}
+
+
+{% block title %}
+home
+{% endblock %}
+
+{% block home_content %}
+{% if wardenobjs %}
+<h1>Warden Approval Page</h1>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Warden Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Email</th>
+            <th scope="col">Priority</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for wardenobj in wardenobjs %}
+        <tr>
+            <td>{{wardenobj.wname}}</td>
+            <td>{{wardenobj.wage}}</td>
+            <td>{{wardenobj.wemail}}</td>
+            <td>{{wardenobj.approval_request_count}}</td>
+            <td>
+                <a href="/adminapp/processapprovel?wid={{wardenobj.id}}">Approve</a> &ensp;
+                <a href="">Reject</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Wardens are not available</p>
+{% endif %}
+
+
+{% endblock %}

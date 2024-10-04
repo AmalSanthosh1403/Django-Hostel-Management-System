@@ -1,0 +1,78 @@
+{% extends 'base_homepageadmin.html' %}
+{% load static %}
+
+{% block title %}
+meals plan
+{% endblock %}
+
+{% block csslink %}
+
+<link rel="stylesheet" href="{% static 'css/roomdetails.css' %}">
+<script
+  src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous">
+</script>
+{% endblock %}
+
+
+{% block home_content %}
+
+    <h2>Daily Meals </h2>
+    <!-- <div style="display: flex; justify-content: flex-end; align-items: center; vertical-align: text-bottom;">
+        <a href="/warden/newmealsplan" class="nav-link" id="clshover">Add new plan</a>
+    </div> -->
+
+
+    {% if messages %}
+    <div class="alert alert-success">
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    </div>
+    {% endif %}
+
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Created By</th>
+                <th scope="col">Approval/Reject</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for availablemealobj in availablemealobjs %}
+            <tr>
+                <td class="selectedDate" data-date-id="{{ availablemealobj.id }}">{{ availablemealobj.date }}</td>
+                
+                <td class="selectedDate" data-date-id="{{ availablemealobj.id }}">
+                    someone
+                </td>
+
+                <td >
+                    {% if availablemealobj.mealapprovel %} 
+                        <p style="margin-bottom: 0;">Approved</p> 
+                    {% else %}
+                        <a href="{% url 'approvemealsplan' mid=availablemealobj.id %}">Approve</a>  &nbsp;
+                        <a href="{% url 'rejectmealsplan' mid=availablemealobj.id %}">Reject</a>
+                    {% endif %}
+                </td>
+            </tr>
+
+            <tr id="meals_details_{{ availablemealobj.id }}" class="mealhide">
+                <td colspan="2">
+                    {% include 'scheduledmeals.html' %}
+                </td>
+            </tr>
+                
+            
+
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block jslink %}
+<script src="{% static 'js/meals_details.js' %} "></script>
+{% endblock %}

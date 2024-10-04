@@ -1,0 +1,61 @@
+{% extends 'base_homepagewarden.html' %}
+{% load static %}
+
+{% block title %}
+viewrooms
+{% endblock %}
+
+{% block csslink %}
+<link rel="stylesheet" href="{% static 'css/viewrooms.css' %}">
+{% endblock %}
+
+{% block home_content %}
+<div style="display: flex; justify-content: space-between; align-items: center;">
+    <h1> {{hostelobj.hname}} </h1>
+    <a href="/warden/wardenrooms">My Rooms</a>
+</div>
+
+{% if roomobjs %}
+
+
+<div class="custom-card-group" style="display: flex; gap: 2.5%; flex-direction: row; flex-wrap: wrap;">
+    {% for roomobj in roomobjs %}
+    
+    <div class="card-link" >
+        <div class="card" >
+            <img src="{% if roomobj.room_photo %} {{roomobj.room_photo.url}} {% else %} ... {% endif %}" class="card-img-top" alt="room photo error" style="height: 6rem; object-fit: cover;">
+            <div class="card-body">
+                <h5 class="card-title" style="text-align: center; margin-bottom: 0;">{{hostelobj.hname}}</h5>
+                <h5 class="card-title" style="text-align: center;"><i style="font-size: 10px;">Room No.</i>{{roomobj.roomid}}</h5>
+
+                <!-- <h5 class="card-title" style="text-align: center;">{{roomobj.roomid}}</h5> -->
+
+                <div class="roomicons">
+                    <p class="card-text"> 
+                        <img src="{% static 'images/student_icon.svg' %}" alt="student_icon error">
+                        <span>{{roomobj.students_count}}</span>
+                    </p>
+                    <p class="card-text">
+                        <img src="{% static 'images/bed_icon.svg' %}" alt="beds_icon error">
+                        <span>{{roomobj.beds_count}}</span>
+                    </p>
+                </div>
+                <p class="card-text"  style="text-align: center; margin: 0;">{{roomobj.room_status}}</p>
+                <p class="card-text"><small class="text-body-secondary">Updated on {{roomobj.updated_at}}</small></p>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+
+
+
+{% else %}
+<p>Rooms not allocated for you, please contact admin.</p>
+
+{% endif %}
+
+
+
+{% endblock %}

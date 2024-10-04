@@ -1,0 +1,103 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/scheduledmeals.css' %}">
+
+<div class="form-container">
+    <form action="" method="post">
+        {% csrf_token %}
+
+        <!-- Breakfast Section -->
+        <div class="meal-section mb-4">
+            <div class="row align-items-center">
+                <div class="col-md-4 text-center">
+                    <span class="input-group-text">Breakfast</span>
+                </div>
+                {% if availablemealobj.breakfastOBJS.all %}
+                    <div class="col-md-4 d-flex justify-content-center">
+                        <div class="input-group input-group-sm d-flex flex-column">
+                        
+                            {% for breakfast in availablemealobj.breakfastOBJS.all %}
+                            <div class="me-3">
+                                <p class="mb-0" {% if breakfast in selectedmealobj.breakfastOBJ.all  %} style="color: blue;" {% endif %}>{{ breakfast.dishname }}</p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="meal-details">
+                            {% for breakfast in availablemealobj.breakfastOBJS.all %}
+                            <p class="mb-0" {% if breakfast in selectedmealobj.breakfastOBJ.all  %} style="color: blue;" {% endif %}>Rs {{ breakfast.dishprice }}/-</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% else %}
+                <div class="col-md-8 d-flex justify-content-left">
+                    <p class="mb-0 text-danger" >Breakfast details not added...</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Lunch Section -->
+        <div class="meal-section mb-4">
+            <div class="row align-items-center">
+                <div class="col-md-4 text-center">
+                    <span class="input-group-text">Lunch</span>
+                </div>
+                {% if availablemealobj.lunchOBJS.all %}
+                    <div class="col-md-4 d-flex justify-content-center">
+                        <div class="input-group input-group-sm d-flex flex-column">
+                            {% for lunch in availablemealobj.lunchOBJS.all %}
+                            <div class="me-3">
+                                <p class="mb-0"  {% if lunch in selectedmealobj.lunchOBJ.all  %} style="color: blue;" {% endif %}>{{ lunch.dishname }}</p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="meal-details">
+                            {% for lunch in availablemealobj.lunchOBJS.all %}
+                            <p class="mb-0" {% if lunch in selectedmealobj.lunchOBJ.all  %} style="color: blue;" {% endif %}>Rs {{ lunch.dishprice }}/-</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="col-md-8 d-flex justify-content-left">
+                        <p class="mb-0 text-danger" >Lunch details not added...</p>
+                    </div>
+            {% endif %}
+        </div>
+</div>
+
+<!-- Dinner Section -->
+<div class="meal-section mb-4">
+    <div class="row align-items-center">
+        <div class="col-md-4 text-center">
+            <span class="input-group-text">Dinner</span>
+        </div>
+        {% if availablemealobj.dinnerOBJS.all %}
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="input-group input-group-sm d-flex flex-column">
+                    {% for dinner in availablemealobj.dinnerOBJS.all %}
+                    <div class="me-3">
+                        <p class="mb-0" {% if dinner in selectedmealobj.dinnerOBJ.all  %} style="color: blue;" {% endif %}>{{ dinner.dishname }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="meal-details">
+                    {% for dinner in availablemealobj.dinnerOBJS.all %}
+                    <p class="mb-0" {% if dinner in selectedmealobj.dinnerOBJ.all  %} style="color: blue;" {% endif %}>Rs {{ dinner.dishprice }}/-</p>
+                    {% endfor %}
+                </div>
+            </div>
+        {% else %}
+            <div class="col-md-8 d-flex justify-content-left">
+                <p class="mb-0 text-danger" >Dinner details not added...</p>
+            </div>
+    {% endif %}
+    </div>
+</div>
+</form>
+</div>

@@ -1,0 +1,31 @@
+{% load static %}
+
+<link rel="stylesheet" href=" {% static 'css/studentcard.css' %}">
+
+<div class="custom-student-card" data-selected="false">
+    <div class="custom-student-card__select">
+        <input type="checkbox" name="selected_students" value="{{ studentobj.id }}" class="custom-student-card__checkbox">
+    </div>
+    <div class="custom-student-card__header">
+        <img src="https://bit.ly/37RkHcc" class="custom-student-card__photo" alt="Student photo" />
+        <h2 class="custom-student-card__name">{{ studentobj.name }}</h2>
+    </div>
+    <div class="custom-student-card__details">
+        <ul class="custom-student-card__details-list">
+            <li class="custom-student-card__detail-item">
+                <span class="custom-student-card__label"></span> 
+                {{ studentobj.phone }}
+            </li>
+            <li class="custom-student-card__detail-item">
+                <span class="custom-student-card__label"></span>
+                <a href="mailto:{{ studentobj.email }}">{{ studentobj.email }}</a>
+            </li>
+            <li class="custom-student-card__detail-item">
+                <span class="custom-student-card__label">Allocation: </span>
+                {{ studentobj.allocation_status }}
+            </li>
+        </ul>
+    </div>
+</div>
+
+

@@ -1,0 +1,98 @@
+/* #datewidth{
+    margin-right: 70%;
+}
+
+#inputGroup-sizing-sm{
+    width: 80px;
+}
+
+#checkboxitems{
+    width: 200px;   
+} */
+
+/* General form styling */
+form {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    
+}
+
+/* Date input styling */
+#datewidth {
+    margin-right: 70%; /* Removed the margin-right to fit within form width */
+}
+
+/* Label and Input Group */
+.input-group-text {
+    width: 100px; /* Slightly wider for better readability */
+    background-color: #007bff;
+    color: white;
+}
+
+.input-group-sm .form-control {
+    height: 35px;
+    border-radius: 5px;
+}
+
+/* Checkbox container styling */
+.d-flex.flex-wrap {
+    display: grid; /* Use CSS Grid for layout */
+    width: 200px;
+    /* grid-template-columns: repeat(3, 1fr); Create 3 equal-width columns */
+    /* gap: 10px 30px; Adds vertical and horizontal spacing between items */
+    /* margin-left: 10px; Adds a little space from the label */
+    align-items: start; /* Aligns items at the start of the grid */
+
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    /* width: auto; Ensures it does not expand unnecessarily */
+    white-space: nowrap; /* Prevents text from wrapping to a new line */
+}
+
+
+.form-check-input {
+    margin-right: 10px; /* Spacing between checkbox and label */
+    transform: scale(1.1); /* Slightly larger checkboxes */
+    accent-color: #007bff; /* Checkbox color */
+}
+
+.form-check-label {
+    font-weight: 500;
+    color: #333;
+}
+
+/* Error message styling */
+p {
+    color: red;
+    font-weight: bold;
+}
+
+/* Hover and Focus Effects */
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: none;
+}
+
+
+.billsectionheader {
+    display: flex;                 /* Enables Flexbox */
+    justify-content: space-between; /* Aligns children to both ends */
+    align-items: center;           /* Vertically centers items */
+    padding: 10px;                 /* Adds some padding */
+    border-bottom: 1px solid #ddd; /* Optional: Adds a bottom border */
+}
+
+.billsectionheader h3 {
+    margin: 0;  /* Removes default margin */
+}
+
+.billsectionheader .generate-bills {
+    text-decoration: none; /* Removes underline from the link */
+    color: #007bff;        /* Optional: Adds color to the link */
+    font-weight: bold;     /* Optional: Makes the link bold */
+}

@@ -1,0 +1,27 @@
+.custom-student-card {
+    border: 1px solid black;
+    border-radius: 0.65rem;
+    width: 18%;
+    margin-top: 2%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.custom-student-card[data-selected="true"] {
+    border-color: #4CAF50; /* Green border when selected */
+    transform: scale(1.05); /* Optional: Add a scale effect when selected */
+}
+
+.custom-student-card__select {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0.5rem;
+}
+
+.custom-student-card__checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}

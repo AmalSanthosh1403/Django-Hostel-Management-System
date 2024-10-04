@@ -1,0 +1,27 @@
+{% extends 'base_homepagewarden.html' %}
+
+
+{% block title %}
+home        
+{% endblock %}
+
+{% block home_content %}
+<h3>Approval Status</h3>
+
+    {% if obj.wapproval %}
+        <p>Admin Approved</p>
+    {% else %}
+    <p>Admin not approved yet,<a href="/warden/reapproval"> Click here to send approval request</a></p>
+
+    {% if messages %}
+        {% for i in messages %}
+            <i style="color: green;">{{i}}</i>
+        {% endfor %}
+    {% endif %}
+
+    {% endif %}
+    
+    {% block somelink %}
+    <p><a href="#">All details</a></p>
+    {% endblock %}
+{% endblock %}  

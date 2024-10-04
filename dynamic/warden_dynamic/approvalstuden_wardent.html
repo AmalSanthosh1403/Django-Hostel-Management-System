@@ -1,0 +1,43 @@
+{% extends 'base_homepagewarden.html' %}
+
+
+{% block title %}
+home
+{% endblock %}
+
+{% block home_content %}
+{% if studentobjs %}
+<h1>Student Approval Page</h1>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Student Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Email</th>
+            <th scope="col">Priority</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for studentobj in studentobjs %}
+        <tr>
+            <td>{{studentobj.name}}</td>
+            <td>{{studentobj.age}}</td>
+            <td>{{studentobj.email}}</td>
+            <td>{{studentobj.approval_request_count}}</td>
+            <td>
+                <a href="/warden/processapproval?sid={{studentobj.id}}">Approve</a> &ensp;
+                <a href="">Reject</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Students are not registered yet or no pending Approvals</p>
+{% endif %}
+
+
+{% endblock %}

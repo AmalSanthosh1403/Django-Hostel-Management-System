@@ -1,0 +1,28 @@
+.form-container {
+    display: flex;                  /* Enable flexbox */
+    justify-content: center;        /* Center horizontally */
+    align-items: center;            /* Center vertically */
+    /* height: 100vh;                  Full viewport height */
+}
+
+form {
+    border: 1px solid #ddd;         /* Add border around the form */
+    padding: 10px;                  /* Add padding inside the form */
+    border-radius: 10px;            /* Rounded corners */
+    background-color: #f8f9fa;      /* Light background color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    /* max-width: 800px;               Maximum width for the form */
+    width: 100%;                    /* Take full width up to max-width */
+}
+
+.meal-section {
+    border: 1px solid #ddd;         /* Add border for clarity */
+    padding: 10px;                  /* Padding around each section */
+    border-radius: 5px;             /* Rounded corners */
+    background-color: white;        /* Background color for clarity */
+    margin-bottom: 20px;            /*  Spacing between sections */
+}
+
+.meal-details {
+    font-weight: bold;              /* Make details bold */
+}

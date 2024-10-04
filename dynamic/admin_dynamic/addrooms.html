@@ -1,0 +1,56 @@
+{% extends 'base_homepageadmin.html' %}
+
+
+{% block title %}
+add room
+{% endblock %}
+
+
+{% block home_content %}
+<h1>Add Rooms</h1> <br>
+
+<!-- Simple Registration Form -->
+<section class="registration-form" style="width: 50%;">
+    <!-- Form Wrapper -->
+    <form name="registration-form" id="registrationForm" method="POST" action="" role="form" enctype="multipart/form-data">
+        {% csrf_token %} 
+        <div class="form-floating">
+            <input type="text" name="roomno" class="form-control" id="firstName" placeholder="First Name" />
+            <label for="firstName">Room No</label>
+        </div><br>
+        
+
+        <select class="form-select" aria-label="" name="students_count">
+            <option selected disabled>No of Students</option>
+            <option value="1">One Student</option>
+            <option value="2">Two Students</option>
+            <option value="3">Three Students</option>
+        </select><br>
+        <select class="form-select" aria-label="" name="beds_count">
+            <option selected disabled>No of Beds</option>
+            <option value="1">One Bed</option>
+            <option value="2">Two Beds</option>
+            <option value="3">Three Beds</option>
+        </select> <br>
+        <div class="input-group">
+            <input type="file" name="roomphoto" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+        </div><br>
+        
+        <div class="form-button-set">
+            <button type="submit" class="c-button c-button--navy">Add Room</button>
+        </div><br>
+    </form>
+    {% if messages %}
+        {% for i in messages %}
+            <i>{{i}}</i>
+        {% endfor %}
+    {% endif %}
+    <!--/ Form Wrapper -->
+</section>
+<!--/ Simple Registration Form -->
+
+
+
+
+
+{% endblock %}

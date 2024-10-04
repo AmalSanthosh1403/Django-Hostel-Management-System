@@ -1,0 +1,27 @@
+<nav class="home-side-nav">
+    <a href="#" class="nav-link {% if not approval_status %} disabled {% endif %}" id="room">All Rooms</a>
+    <div id="dropdwonContent" class="hide">
+        {% for hostelobj in hostel_names %}
+        <a href="{% url 'viewallrooms' hid=hostelobj.id %}">{{hostelobj.hname}}</a>
+        {% endfor %}
+    </div>
+
+    <a href="#" class="nav-link {% if not approval_status %} disabled {% endif %}" id="ManageMess">Mess Management</a>
+    <div id="addMessDropdown" class="messhide">
+        <a href="">Add Dish</a>
+        <a href="/warden/mealsplan">Meal Plan</a>
+        <a href="">Report</a>
+    </div>
+
+    <a href="{% url 'billdate' %}" class="nav-link {% if not approval_status %} disabled {% endif %}">Fee Management</a>
+
+    <a href="/warden/wardenrooms" class="nav-link {% if not approval_status %} disabled {% endif %}">My Room</a>
+    
+    <a href="#" class="nav-link {% if not approval_status %} disabled {% endif %}">Students Attendance</a>
+
+    
+
+    <div class="logout-btn">
+        <a class="btn btn-danger" href="/logout">Logout</a>
+    </div>
+</nav>

@@ -1,0 +1,116 @@
+{% extends 'base_homepageadmin.html' %}
+{% load static %}
+
+{% block title %}
+viewrooms
+{% endblock %}
+
+{% block csslink %}
+
+{% endblock %}
+
+{% block home_content %}
+<h2>Room {{roomobj.roomid}}</h2>
+<div style="display: flex; justify-content: space-between; align-items: center; vertical-align: text-bottom;">
+    <h4> {{roomobj.room_status}} </h4>
+    <a href="#">Add Student</a>
+</div>
+
+<!-- form -->
+<form action="{% url 'updateroom' rid=roomobj.id %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Total Students Availability</span>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+            value="{{roomobj.students_count}}" name="totalstu">
+    </div>
+
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Total Bed Availability</span>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+            value="{{roomobj.beds_count}}" name="totalbed">
+    </div>
+
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Students Current Count</span>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+            value="{{roomobj.students_current_count}}" disabled>
+    </div>
+
+    <div class="input-group input-group-sm mb-3 d-flex align-items-center">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Wardens List</span>
+        {% if wardenobjs %}
+            <div class="d-flex flex-wrap ms-3">
+                {% for wardenobj in wardenobjs %}
+                    {% if wardenobj.wapproval %}
+                        <div class="form-check me-3">
+                            <input class="form-check-input" type="checkbox" value="{{wardenobj.id}}" name="allwarden" id="flexCheckDefault{{ wardenobj.id }}" {% if wardenobj in roomobj.wardenOBJ.all %} checked {% endif %}>
+                            <label class="form-check-label" for="flexCheckDefault{{ wardenobj.id }}">
+                                {{wardenobj.wname}}
+                            </label>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% else %}
+            <p style="color: red;">Wardens are not registered yet...</p>
+        {% endif %}
+    </div>
+    <br>
+
+    
+    <img src="{{roomobj.room_photo.url}}" height="50px" width="50px" alt="uploaded img error">
+    <input type="file" name="roomimg"> <br><br>
+
+    <!-- msg -->
+    {% if messages %}
+    <div class="alert alert-success">
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    </div>
+    {% endif %}
+
+
+    <div class="form-button-set">
+        <button type="submit" class="c-button c-button--navy">Update Room</button>
+    </div><br>
+</form>
+
+
+
+<!-- studentd details in table -->
+{% if studentobjs %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Student Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">phone</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for studentobj in studentobjs %}
+        <tr>
+            <td>{{studentobj.name}}</td>
+            <td>{{studentobj.email}}</td>
+            <td>{{studentobj.phone}}</td>
+            <td><a href="{% url 'removestudent' rid=roomobj.id sid=studentobj.id %}">Remove</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table> 
+
+{% else %}
+    <p style="color: red;">
+        Students are not allocated yet...
+    </p>
+{% endif %}
+
+
+
+
+
+{% endblock %}

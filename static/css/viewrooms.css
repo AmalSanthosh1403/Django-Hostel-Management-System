@@ -1,0 +1,33 @@
+
+
+.roomicons{
+    margin: 0;
+    display: flex;
+    justify-content: space-evenly;
+    
+    
+}
+
+.roomicons .card-text{
+    margin: 0;
+    vertical-align: bottom;
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 18%;
+    margin-top: 2%;
+}
+
+.card {
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* style="border: 1px solid black; width: 18%; margin-top: 2%;" */
+
