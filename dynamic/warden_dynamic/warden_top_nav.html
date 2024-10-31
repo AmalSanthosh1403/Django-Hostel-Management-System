@@ -2,6 +2,16 @@
 <nav class="home-top-nav navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="/warden/home">Logo</a>
+
+
+        
+        <!-- Right-side elements that stay visible on the top right -->
+        <div class="d-flex order-lg-2 ms-auto align-items-center">
+            <a class="nav-link text-white p-2" href="#"><img src="{% static 'images/notifications_icon.svg' %}" alt="notifications_icon"></a>
+                <button class="btn btn-outline-success" type="submit"><a class="nav-link" href="/warden/profile">Hi {{logged_in_user}} </a></button>
+        </div>
+
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -36,9 +46,7 @@
                 </li>
                 
             </ul>
-                <a class="nav-link text-white p-2" href="#"><img src="{% static 'images/notifications_icon.svg' %}" alt="notifications_icon"></a>
-                <button class="btn btn-outline-success" type="submit"><a class="nav-link" href="/warden/profile">Hi {{logged_in_user}} </a></button>
-        
+                
         </div>
     </div>
 </nav>
